@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {RxCaretSort} from 'react-icons/rx'
 
 const Questions = ({
   id,
@@ -17,26 +18,25 @@ const Questions = ({
   const handleOpenToResponse = () => {
     setOpenResponse(!openResponse);
   };
+  
 
   return (
     <>
       <div className="leading-10 cursor-pointer flex w-full items-center">
         {selectCategory === category ? (
           <>
-            <p>{title}</p>{" "}
-            <img
-              onClick={() => handleOpenToResponse()}
-              src="../img/arrow.png"
-              alt="arrow"
-              className="w-[1.5%] h-3 ml-2 "
-            />{" "}
+            <p onClick={() => handleOpenToResponse()} className="transition ease-in-out hover:text-amber-500">{title}</p>
+            <RxCaretSort
+            style={{fontSize: "17px", marginLeft: "5px"}}
+            onClick={() => handleOpenToResponse()}
+            />
           </>
         ) : (
           ""
         )}
       </div>
 
-      {openResponse ? <p className="text-sm rounded-md bg-slate-400 p-2">{response}</p> : ""}
+      {openResponse ? <p className="text-sm rounded-md bg-slate-400 p-2">{response}</p> : <></>}
     </>
   );
 };

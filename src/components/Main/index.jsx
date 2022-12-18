@@ -10,10 +10,10 @@ const Main = () => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions.questions);
   const categorys = useSelector((state) => state.category.category);
+
   const loadingQuestion = useSelector(
     (state) => state.questions.loadingQuestion
   );
-  console.log(loadingQuestion);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectCategory, setSelectCategory] = useState("React");
 
@@ -25,11 +25,10 @@ const Main = () => {
   const handleSelectCategory = (value) => {
     setSelectCategory(value);
   };
-  console.log(selectCategory);
 
   return (
-    <div className="bg-white w-full mt-36 rounded-xl px-10 py-5">
-      <div className="flex justify-between items-center">
+    <div className="bg-white w-full mt-36 rounded-2xl">
+      <div className="flex justify-between w-full bg-gray-600 rounded-t-2xl p-8 items-center">
         {loadingQuestion
           ? [...new Array(7)].map((_, i) => <SkeletonCategory key={i} />)
           : categorys.map((items, i) => {
@@ -43,7 +42,7 @@ const Main = () => {
                   className={
                     activeIndex === i
                       ? "text-amber-500 cursor-pointer rounded-3xl"
-                      : "cursor-pointer"
+                      : "cursor-pointer text-white transition ease-in-out hover:text-amber-500 rounded-3xl"
                   }
                 >
                   {items.name}
@@ -53,19 +52,21 @@ const Main = () => {
       </div>
 
       <div className="content mt-6">
-        {loadingQuestion
-          ? [...new Array(15)].map((_, i) => (
-              <span className="">
-                <Skeleton />
-              </span>
-            ))
-          : questions.map((item) => (
-              <Questions
-                {...item}
-                key={item.id}
-                selectCategory={selectCategory}
-              />
-            ))}
+        <div className="px-10 pb-6">
+          {loadingQuestion
+            ? [...new Array(15)].map((_, i) => (
+                <span className="">
+                  <Skeleton />
+                </span>
+              ))
+            : questions.map((item) => (
+                <Questions
+                  {...item}
+                  key={item.id}
+                  selectCategory={selectCategory}
+                />
+              ))}
+        </div>
       </div>
     </div>
   );
