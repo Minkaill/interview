@@ -3,12 +3,12 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 const Header = () => {
   const {theme, toggleTheme} = useDarkMode()
   const body = document.getElementById("bodyRoot")
-  body.style.background = theme === "light" ? "#1e293b" : "#f5f5f5"
+  body.style.background = theme === "dark" ? "#1e293b" : "#f5f5f5"
 
   return (
     <div
       className={
-        theme === "light"
+        theme === "dark"
           ? "w-full fixed top-0 transition ease-in-out bg-slate-800"
           : "w-full fixed top-0 transition ease-in-out bg-white"
       }
@@ -19,7 +19,7 @@ const Header = () => {
           <img src="../img/light-bulb.png" alt="" className="w-[8%] mr-2" />
           <p
             className={
-              theme === "light"
+              theme === "dark"
                 ? "text-xl text-white"
                 : "transition ease-in-out text-xl text-black"
             }
@@ -31,7 +31,7 @@ const Header = () => {
         <div className="flex items-center">
           <img
             onClick={toggleTheme}
-            className={theme === "light" ? "cursor-pointer transition ease-in-out rotate-180" : "transition ease-in-out rotate-0 cursor-pointer"}
+            className={theme === "dark" ? "cursor-pointer transition ease-in-out rotate-180" : "transition ease-in-out rotate-0 cursor-pointer"}
             src="../img/nightmode.png"
             width={60}
             height={60}

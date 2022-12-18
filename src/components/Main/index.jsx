@@ -5,6 +5,8 @@ import { getQuestion } from "../../features/questionSlice";
 import Questions from "./Questions";
 import Skeleton from "./Skeleton";
 import SkeletonCategory from "./SkeletonCategory";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -16,6 +18,10 @@ const Main = () => {
   );
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectCategory, setSelectCategory] = useState("React");
+
+  useEffect(() => {
+    AOS.init();
+  }, [selectCategory]);
 
   useEffect(() => {
     dispatch(getQuestion());
@@ -34,6 +40,7 @@ const Main = () => {
           : categorys.map((items, i) => {
               return (
                 <h1
+                  data-aos="zoom-out"
                   key={i}
                   onClick={() => {
                     handleSelectCategory(items.name);
