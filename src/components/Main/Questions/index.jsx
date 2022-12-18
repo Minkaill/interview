@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Questions = ({
   id,
@@ -10,13 +10,17 @@ const Questions = ({
 }) => {
   const [openResponse, setOpenResponse] = useState(false);
 
+  useEffect(() => {
+      setOpenResponse(false)
+  }, [selectCategory])
+
   const handleOpenToResponse = () => {
     setOpenResponse(!openResponse);
   };
 
   return (
     <>
-      <div className="leading-9 cursor-pointer flex w-full items-center">
+      <div className="leading-10 cursor-pointer flex w-full items-center">
         {selectCategory === category ? (
           <>
             <p>{title}</p>{" "}
@@ -32,7 +36,7 @@ const Questions = ({
         )}
       </div>
 
-      {openResponse ? <p>{response}</p> : ""}
+      {openResponse ? <p className="text-sm rounded-md bg-slate-400 p-2">{response}</p> : ""}
     </>
   );
 };

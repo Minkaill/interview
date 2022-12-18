@@ -42,7 +42,7 @@ const Main = () => {
                   }}
                   className={
                     activeIndex === i
-                      ? "text-amber-500 cursor-pointer bg-black p-3 rounded-3xl"
+                      ? "text-amber-500 cursor-pointer rounded-3xl"
                       : "cursor-pointer"
                   }
                 >
@@ -52,7 +52,7 @@ const Main = () => {
             })}
       </div>
 
-      <div className="content mt-10">
+      <div className="content mt-6">
         {loadingQuestion
           ? [...new Array(15)].map((_, i) => (
               <span className="">
