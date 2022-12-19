@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { RxCaretSort } from "react-icons/rx";
 
-
 const Questions = ({
   id,
   title,
@@ -16,16 +15,13 @@ const Questions = ({
     setOpenResponse(false);
   }, [selectCategory]);
 
-
   const handleOpenToResponse = () => {
     setOpenResponse(!openResponse);
   };
 
   return (
     <>
-      <div
-        className="leading-10 cursor-pointer flex w-full items-center"
-      >
+      <div className="leading-10 cursor-pointer flex w-full items-center">
         {selectCategory === category ? (
           <>
             <p

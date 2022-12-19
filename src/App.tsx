@@ -1,4 +1,3 @@
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/Main/index";
 
@@ -9,7 +8,6 @@ function App() {
       <div className="App w-3/5 m-auto mt-10 flex-auto">
         <Main />
       </div>
-      <Footer />
     </div>
   );
 }

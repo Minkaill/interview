@@ -12,11 +12,12 @@ export const useDarkMode = () => {
   };
 
   useEffect(() => {
-    const localTheme = localStorage.getItem("theme");
+    const localTheme = localStorage.setItem("theme", theme);
+    const getTheme = localStorage.getItem("theme");
     if (localTheme) {
-      setTheme(localTheme);
+      setTheme(getTheme);
     }
-  }, []);
+  }, [theme]);
 
   return {
     theme,
