@@ -7,10 +7,14 @@ const initialState = {
   loadingQuestion: false,
 };
 
-export const getQuestion = createAsyncThunk("/get/question", async (_, thunkAPI) => {
+export const getQuestion = createAsyncThunk(
+  "/get/question",
+  async (_, thunkAPI) => {
     try {
-      const responseQuestions = await axios.get("https://639e1cfa1ec9c6657bb9eece.mockapi.io/questions");
-      console.log(responseQuestions.data)
+      const responseQuestions = await axios.get(
+        "https://639e1cfa1ec9c6657bb9eece.mockapi.io/questions"
+      );
+      console.log(responseQuestions.data);
       return responseQuestions.data;
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);

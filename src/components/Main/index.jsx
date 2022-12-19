@@ -5,8 +5,6 @@ import { getQuestion } from "../../features/questionSlice";
 import Questions from "./Questions";
 import Skeleton from "./Skeleton";
 import SkeletonCategory from "./SkeletonCategory";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -20,10 +18,6 @@ const Main = () => {
   const [selectCategory, setSelectCategory] = useState("React");
 
   useEffect(() => {
-    AOS.init();
-  }, [selectCategory]);
-
-  useEffect(() => {
     dispatch(getQuestion());
     dispatch(getCategory());
   }, [dispatch]);
@@ -33,14 +27,13 @@ const Main = () => {
   };
 
   return (
-    <div className="bg-white w-full mt-36 rounded-2xl">
+    <div className="bg-white w-full mt-24 rounded-2xl">
       <div className="flex justify-between w-full bg-gray-600 rounded-t-2xl p-8 items-center">
         {loadingQuestion
           ? [...new Array(7)].map((_, i) => <SkeletonCategory key={i} />)
           : categorys.map((items, i) => {
               return (
                 <h1
-                  data-aos="zoom-out"
                   key={i}
                   onClick={() => {
                     handleSelectCategory(items.name);
@@ -58,7 +51,7 @@ const Main = () => {
             })}
       </div>
 
-      <div className="content mt-6">
+      <div className="content mt-6 overflow-scroll h-96">
         <div className="px-10 pb-6">
           {loadingQuestion
             ? [...new Array(15)].map((_, i) => (

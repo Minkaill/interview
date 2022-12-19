@@ -1,14 +1,16 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Main from './components/Main/index';
+import Main from "./components/Main/index";
 
 function App() {
   return (
-    <>
+    <div className="wrapper h-screen flex flex-col">
       <Header />
-      <div className="App w-3/5 m-auto mt-10">
+      <div className="App w-3/5 m-auto mt-10 flex-auto">
         <Main />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

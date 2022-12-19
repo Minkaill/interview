@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { RxCaretSort } from "react-icons/rx";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 const Questions = ({
   id,
@@ -17,9 +16,6 @@ const Questions = ({
     setOpenResponse(false);
   }, [selectCategory]);
 
-  useEffect(() => {
-    AOS.init();
-  }, [selectCategory]);
 
   const handleOpenToResponse = () => {
     setOpenResponse(!openResponse);
@@ -27,7 +23,9 @@ const Questions = ({
 
   return (
     <>
-      <div data-aos="fade-up" className="leading-10 cursor-pointer flex w-full items-center">
+      <div
+        className="leading-10 cursor-pointer flex w-full items-center"
+      >
         {selectCategory === category ? (
           <>
             <p
